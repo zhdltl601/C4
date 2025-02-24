@@ -156,7 +156,7 @@ namespace wfBomb
             FinishedTimeHMLabel.Visible = false;
 
             PauseButton.Text = pauseButtonTextDefault;
-            EndTimeHMLabel.Text = TimeUtility.DefaultTime;
+            EndTimeHMLabel.Text = TimeUtility.DEFAULT_TIME;
             sp_onTaskAnticipation.Stop();
             sp_onTaskFinsihed.Stop();
             currentHour = 0;
@@ -220,7 +220,7 @@ namespace wfBomb
             isPlanted = true;
             isPlaying = true;
 
-            TimeInputMaskedTextBox.Text = TimeUtility.DefaultTime;
+            TimeInputMaskedTextBox.Text = TimeUtility.DEFAULT_TIME;
             EndTimeHMLabel.Text = TimeUtility.ConvertTimeToString(rHour, rMinute);
 
             UpdateCurrentTimeText();

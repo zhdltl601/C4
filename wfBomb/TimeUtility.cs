@@ -8,7 +8,7 @@ namespace wfBomb
 {
     public static class TimeUtility
     {
-        public const string DefaultTime = "00:00";
+        public const string DEFAULT_TIME = "00:00";
         public static string ConvertTimeToString(in uint hour, in uint minute)
         {
             return string.Format("{0:D2}:{1:D2}", hour, minute);
