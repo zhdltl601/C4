@@ -5,6 +5,7 @@
 
 #custom
 [Ii]gnore/
+wfBomb/_build/
 
 # User-specific files
 *.rsuser
