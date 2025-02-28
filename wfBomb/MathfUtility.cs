@@ -8,9 +8,9 @@ namespace wfBomb
 {
     public static class MathfUtility
     {
-        public static uint Base60(uint target)
+        public static int Base60(int target)
         {
-            uint result = target / 60;
+            int result = target / 60;
             return result;
         }
     }

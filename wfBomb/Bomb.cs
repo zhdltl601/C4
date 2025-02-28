@@ -36,12 +36,12 @@ namespace wfBomb
         private bool isPlanted;
         private bool isPlaying;
 
-        private uint targetHour;
-        private uint targetMinute;
+        private int targetHour;
+        private int targetMinute;
 
-        private uint currentHour;
-        private uint currentMinute;
-        private uint currentSecond;
+        private int currentHour;
+        private int currentMinute;
+        private int currentSecond;
         public Bomb()
         {
             InitializeComponent();
@@ -80,7 +80,7 @@ namespace wfBomb
         private bool TryPlaySound(SoundPlayer player)
         {
             bool result = CanPlaySound;
-            if(result)
+            if (result)
                 player.Play();
             return result;
         }
@@ -92,17 +92,17 @@ namespace wfBomb
         }
         private void UpdateCurrentTime()
         {
-            uint currentSecondB60Result = MathfUtility.Base60(currentSecond);
+            int currentSecondB60Result = MathfUtility.Base60(currentSecond);
             currentSecond -= 60 * currentSecondB60Result;
             currentMinute += currentSecondB60Result;
 
-            uint currentMinuteBase60Result = MathfUtility.Base60(currentMinute);
+            int currentMinuteBase60Result = MathfUtility.Base60(currentMinute);
             currentMinute -= 60 * currentMinuteBase60Result;
             currentHour += currentMinuteBase60Result;
 
             currentHour = Math.Min(currentHour, 99);
         }
-        private void GetTime(in string targetString, out uint hour, out uint minute)
+        private void GetTime(in string targetString, out int hour, out int minute)
         {
             stringBuilder.Clear();
             hour = 0;
@@ -110,7 +110,7 @@ namespace wfBomb
             {
                 if (item == ':')
                 {
-                    hour = uint.Parse(stringBuilder.ToString());
+                    hour = int.Parse(stringBuilder.ToString());
                     stringBuilder.Clear();
                 }
                 else
@@ -125,7 +125,7 @@ namespace wfBomb
             {
                 stringBuilder.Append('0');
             }
-            minute = uint.Parse(stringBuilder.ToString());
+            minute = int.Parse(stringBuilder.ToString());
         }
         private void OnTaskFinsihed()
         {
@@ -135,9 +135,9 @@ namespace wfBomb
             FinishedTimeLabel.Visible = true;
             FinishedTimeHMLabel.Visible = true;
             DateTime current = DateTime.Now;
-            uint realTimeHour = (uint)current.Hour;
+            int realTimeHour = current.Hour;
             //realTimeHour = realTimeHour > 12 ? realTimeHour - 12 : realTimeHour;
-            uint realTimeMinute = (uint)DateTime.Now.Minute;
+            int realTimeMinute = DateTime.Now.Minute;
             Debug.WriteLine($"{realTimeHour} {realTimeMinute}");
             FinishedTimeHMLabel.Text = TimeUtility.ConvertTimeToString(realTimeHour, realTimeMinute);
 
@@ -187,8 +187,8 @@ namespace wfBomb
         }
         private void PlantButton_Click(object sender, EventArgs e)
         {
-            GetTime(TimeInputMaskedTextBox.Text, out uint hour, out uint minute);
-            TimeUtility.ConvertTimeToBase60(hour, minute, out uint rHour, out uint rMinute);
+            GetTime(TimeInputMaskedTextBox.Text, out int hour, out int minute);
+            TimeUtility.ConvertTimeToBase60(hour, minute, out int rHour, out int rMinute);
 
             bool invaludNumberInput = rHour == 0 && rMinute <= 0;
             if (invaludNumberInput)
