@@ -172,12 +172,26 @@ namespace wfBomb
             bool currentHourFlag = currentHour >= targetHour;
             bool currentMinuteFlag = currentMinute >= targetMinute;
 
-            //uint antiHour;
-            //uint antiMinute;
-            const int anticipationSecond = 60 - 9; //number 9 : anticipation audioclip length, which is nine seconds
-            if (CanPlaySound && currentHourFlag && currentMinute + 1 == targetMinute && currentSecond == anticipationSecond) // todo : fix this bug
+
+            if (CanPlaySound)
             {
-                sp_onTaskAnticipation.Play();
+                const int anticipationSecond = 9; //number 9 : anticipation audioclip length, which is nine seconds
+
+                int tempTargetHour = targetHour;
+                int tempTargetMinute = targetMinute - 1;
+                int tempTargetSecond = 60 - anticipationSecond;
+                if (tempTargetMinute < 0)
+                {
+                    tempTargetHour -= 1;
+                    tempTargetMinute = 59;
+                }
+
+                //Debug.WriteLine($"{tempTargetHour} {tempTargetMinute} {tempTargetSecond}");
+
+                if (currentHour == tempTargetHour && currentMinute == tempTargetMinute && currentSecond == tempTargetSecond)
+                {
+                    sp_onTaskAnticipation.Play();
+                }
             }
 
             if (currentHourFlag && currentMinuteFlag)
