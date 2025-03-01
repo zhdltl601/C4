@@ -132,13 +132,18 @@ namespace wfBomb
             StopTimer();
             TryPlaySound(sp_onTaskFinsihed);
 
+            StartedTimeLabel.Visible = true;
+            StartedTimeHMLabel.Visible = true;
+
             FinishedTimeLabel.Visible = true;
             FinishedTimeHMLabel.Visible = true;
+
             DateTime current = DateTime.Now;
             int realTimeHour = current.Hour;
             //realTimeHour = realTimeHour > 12 ? realTimeHour - 12 : realTimeHour;
-            int realTimeMinute = DateTime.Now.Minute;
-            Debug.WriteLine($"{realTimeHour} {realTimeMinute}");
+            int realTimeMinute = current.Minute;
+
+            //Debug.WriteLine($"{realTimeHour} {realTimeMinute}");
             FinishedTimeHMLabel.Text = TimeUtility.ConvertTimeToString(realTimeHour, realTimeMinute);
 
             popupNotifierOnFinsihed.ContentText = TimeUtility.ConvertTimeToString(targetHour, targetMinute);// string.Format("{0:D2}:{1:D2}", targetHour, targetMinute);
@@ -152,6 +157,9 @@ namespace wfBomb
         }
         private void ResetTimer()
         {
+            StartedTimeLabel.Visible = false;
+            StartedTimeHMLabel.Visible = false;
+
             FinishedTimeLabel.Visible = false;
             FinishedTimeHMLabel.Visible = false;
 
@@ -180,6 +188,7 @@ namespace wfBomb
                 int tempTargetHour = targetHour;
                 int tempTargetMinute = targetMinute - 1;
                 int tempTargetSecond = 60 - anticipationSecond;
+
                 if (tempTargetMinute < 0)
                 {
                     tempTargetHour -= 1;
@@ -220,6 +229,12 @@ namespace wfBomb
                     return;
                 }
             }
+
+            DateTime current = DateTime.Now;
+
+            int startedHour = current.Hour;
+            int startedMinute = current.Minute;
+            StartedTimeHMLabel.Text = TimeUtility.ConvertTimeToString(startedHour, startedMinute);
 
             ResetTimer();
 

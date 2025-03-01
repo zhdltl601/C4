@@ -56,6 +56,8 @@ namespace wfBomb
             this.FileLoadBTN = new System.Windows.Forms.Button();
             this.FinishedTimeLabel = new System.Windows.Forms.Label();
             this.FinishedTimeHMLabel = new System.Windows.Forms.Label();
+            this.StartedTimeLabel = new System.Windows.Forms.Label();
+            this.StartedTimeHMLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.TimeGB.SuspendLayout();
@@ -223,7 +225,7 @@ namespace wfBomb
             // 
             this.FinishedTimeLabel.AutoSize = true;
             this.FinishedTimeLabel.Font = new System.Drawing.Font("맑은 고딕", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.FinishedTimeLabel.Location = new System.Drawing.Point(312, 1);
+            this.FinishedTimeLabel.Location = new System.Drawing.Point(312, 32);
             this.FinishedTimeLabel.Name = "FinishedTimeLabel";
             this.FinishedTimeLabel.Size = new System.Drawing.Size(154, 28);
             this.FinishedTimeLabel.TabIndex = 13;
@@ -234,18 +236,42 @@ namespace wfBomb
             // 
             this.FinishedTimeHMLabel.AutoSize = true;
             this.FinishedTimeHMLabel.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.FinishedTimeHMLabel.Location = new System.Drawing.Point(460, 1);
+            this.FinishedTimeHMLabel.Location = new System.Drawing.Point(460, 32);
             this.FinishedTimeHMLabel.Name = "FinishedTimeHMLabel";
             this.FinishedTimeHMLabel.Size = new System.Drawing.Size(71, 32);
             this.FinishedTimeHMLabel.TabIndex = 13;
             this.FinishedTimeHMLabel.Text = "00:00";
             this.FinishedTimeHMLabel.Visible = false;
             // 
+            // StartedTimeLabel
+            // 
+            this.StartedTimeLabel.AutoSize = true;
+            this.StartedTimeLabel.Font = new System.Drawing.Font("맑은 고딕", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.StartedTimeLabel.Location = new System.Drawing.Point(312, 9);
+            this.StartedTimeLabel.Name = "StartedTimeLabel";
+            this.StartedTimeLabel.Size = new System.Drawing.Size(147, 28);
+            this.StartedTimeLabel.TabIndex = 16;
+            this.StartedTimeLabel.Text = "StartedTime  :";
+            this.StartedTimeLabel.Visible = false;
+            // 
+            // StartedTimeHMLabel
+            // 
+            this.StartedTimeHMLabel.AutoSize = true;
+            this.StartedTimeHMLabel.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.StartedTimeHMLabel.Location = new System.Drawing.Point(460, 6);
+            this.StartedTimeHMLabel.Name = "StartedTimeHMLabel";
+            this.StartedTimeHMLabel.Size = new System.Drawing.Size(71, 32);
+            this.StartedTimeHMLabel.TabIndex = 17;
+            this.StartedTimeHMLabel.Text = "00:00";
+            this.StartedTimeHMLabel.Visible = false;
+            // 
             // Bomb
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(618, 424);
+            this.Controls.Add(this.StartedTimeHMLabel);
+            this.Controls.Add(this.StartedTimeLabel);
             this.Controls.Add(this.FinishedTimeHMLabel);
             this.Controls.Add(this.FinishedTimeLabel);
             this.Controls.Add(this.FileLoadBTN);
@@ -290,6 +316,8 @@ namespace wfBomb
         private Button FileLoadBTN;
         private Label FinishedTimeLabel;
         private Label FinishedTimeHMLabel;
+        private Label StartedTimeLabel;
+        private Label StartedTimeHMLabel;
     }
 }
 
